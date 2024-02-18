@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 function Footer() {
+    const [button,setbutton]=useState(false)
+
+   useEffect(()=>{
+    const handle=()=>{
+        if(window.pageYOffset > 200){
+            setbutton(true)
+        }
+        else{
+            setbutton(false)
+        }
+    }
+    window.addEventListener('scroll',handle)
+    return () =>{
+        window.removeEventListener('scroll',handle)
+    }
+   }, [])
+
+    const scrolling=()=>{
+        window.scrollTo({
+            top : '0',
+            behavior : 'smooth'
+        });
+    }
+
+    
     return (
+
         <>
             <div className="footer">
                 <div className="foot">
@@ -70,6 +96,7 @@ function Footer() {
                     <h4>ADA Accessibility Policy . <span>Privacy Policy</span></h4>
                 </div>
             </div>
+            <button className={`top ${button ? 'visible' : 'hidden'}`} onClick={scrolling}>Back to Top</button>
         </>
     )
 }

@@ -5,7 +5,19 @@
   font-style: none;
   list-style: none;
 }
-
+.top{
+  position: fixed;
+  left: 45%;
+  top: 95%;
+  padding: 0.3rem 2rem;
+  background-color: #8ebd8e;
+  border-radius: 32px 32px 0px 0px;
+  border: none;
+  z-index: 10;
+}
+button.top.hidden{
+  display: none;
+}
 .header {
   display: flex;
   justify-content: space-around;
@@ -15,6 +27,7 @@
 .header .nav1 {
   display: flex;
   place-items: center;
+  position: relative;
 }
 
 .header .nav1 ul {
@@ -22,25 +35,51 @@
 }
 
 .header .nav1 ul li {
-  padding: 0 15px;
+  padding: 0 15px; 
+  position: relative;
+  color: #1A4122FF;
 }
-
+.header .nav1 ul li:hover{
+  color: #C15627;
+  cursor: pointer;
+}
+.header .nav1 ul li:hover > ul{
+  left: auto;
+  top: 20%;
+}
+.header .nav2 ul li:hover{
+  color: #C15627;
+  cursor: pointer;
+}
 .header .nav1 ul li ul.menu {
+  position: absolute;
   display: none;
   transition: all 0.7s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 40px;
+  float: left;
+  left: -999em;
 }
 
 .header .nav1 ul li ul.menu li {
   display: block;
+  white-space: nowrap;
+  padding-bottom: 6px;
 }
-
+.header .nav1 ul li:focus ul.menu{
+  left: auto;
+  display: block;
+}
 .header .nav1 ul li:hover ul.menu {
   transition: all 0.7s ease-in-out;
-  position: absolute;
   display: block;
-  background: linear-gradient(169deg, #e2dada, transparent);
+  padding: 0 10px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  transform: translate(-3px ,6px);
+  z-index: 9999;
+  margin-left: -25px;
+    top: 100%;
+    left: auto;
 }
 
 .header .nav2 {
